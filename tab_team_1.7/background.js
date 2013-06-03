@@ -32,6 +32,7 @@ var roster = [];
 roster[0] = new Cluster();
 // badges:
 chrome.browserAction.setBadgeText({text:"1/1"});
+chrome.browserAction.setBadgeBackgroundColor(#2980b9);
 var rosterCounter = 0;
 var triggered = false;
 //////////////////////////////////////////////////////////////////////////////////////
