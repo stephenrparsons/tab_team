@@ -1,29 +1,35 @@
 body {
 	background-color: #ecf0f1;
-	width: 200px;
+	width: 125px;
+	font-family: arial;
+	font-size: 9pt;
+	vertical-align: center;
 }
 h1 {
-	font-family: verdana;
+	font-family: arial;
 	font-size: 11pt;
 	color: black;
 	text-align: left;
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin: 0px;
 	padding: 0px;
 }
 button {
-	width: 40px;
-	height: 40px;
+	width: 31px;
+	height: 31px;
 	border: solid;
-	border-width: 3px;
+	border-width: 2px;
 	border-color: black;
-	padding: 10px;
-	margin: 10px;
+	padding: 0px;
+	margin: 5px;
+	margin-left: 0px;
+	font-size: 7pt;
+	font-family: arial;
+	vertical-align: middle;
 }
 hr {
 	padding: 0px;
-	margin-top: 3px;
-	margin-bottom: 3px;
-	margin-left: 0px;
-	margin-right: 0px;
+	margin: 0px;
+	color: #7f8c8d;
+	background-color: #7f8c8d;
+	height: 1px;
 }

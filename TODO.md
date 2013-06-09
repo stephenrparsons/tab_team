@@ -7,6 +7,5 @@ create HTML popup <br>
 ~icons for all <br>
 
 html local storage <br>
-~something <br>
 
 gray icon/message for domains on which it does not run <br>
