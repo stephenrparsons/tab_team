@@ -35,6 +35,7 @@ chrome.browserAction.setBadgeText({text:"1/1"});
 chrome.browserAction.setBadgeBackgroundColor({color:"#2980B9"});
 var rosterCounter = 0;
 var triggered = false;
+var badge_on = true;
 //////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -97,7 +98,15 @@ function unpin_all() {
 function badge_toggle() {
 	console.log("------------------------------------------------");
 	console.log("triggered by bbutton");
-	// toggle
+	if (badge_on == true)
+	{
+		chrome.browserAction.setBadgeText({text:""});
+		badge_on = false;
+	} else {
+		var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
+		chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
+		badge_on = true;
+	}
 	triggered = false;
 	}
 /////////////////////////////////////////////////////////////////////////////////////////
