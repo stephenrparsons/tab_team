@@ -52,6 +52,21 @@ chrome.extension.onMessage.addListener(
 });
 /////////////////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////
+// Detect button event messages from popup.html. distinguish between 
+// the various buttons and act accordingly 
+chrome.extension.onMessage.addListener(
+	function(request, sender, sendResponse) {
+		if(request.greeting == "xclick" && !triggered){
+			triggered = true;
+			trigger();
+		} else if (request.greeting == "zclick" && !triggered){
+			triggered = true;
+			left_trigger();
+		}
+});
+/////////////////////////////////////////////////////////////////////////////////////////
+
 /////////////////////////////////////////////////////////////////////////////////////////
 // handle everything that happens when ctrl+shift+x is pressed
 function trigger(){
