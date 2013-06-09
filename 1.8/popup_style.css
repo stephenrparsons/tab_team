@@ -4,6 +4,26 @@ body {
 }
 h1 {
 	font-family: verdana;
-	font-size: 12pt;
+	font-size: 11pt;
 	color: black;
+	text-align: left;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+button {
+	width: 40px;
+	height: 40px;
+	border: solid;
+	border-width: 3px;
+	border-color: black;
+	padding: 10px;
+	margin: 10px;
+}
+hr {
+	padding: 0px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
