@@ -21,18 +21,21 @@ window.onload = function() {
         console.log("------------------------------------------------");
         console.log("triggered by xbutton");
         chrome.extension.sendMessage({greeting: "xclick"});
+    }
 
     var rbutton = document.getElementById("rbutton");
     rbutton.onclick = function() {
         console.log("------------------------------------------------");
         console.log("triggered by rbutton");
         chrome.extension.sendMessage({greeting: "rclick"});
+    }
 
     var ubutton = document.getElementById("ubutton");
     ubutton.onclick = function() {
         console.log("------------------------------------------------");
         console.log("triggered by ubutton");
         chrome.extension.sendMessage({greeting: "uclick"});
+    }
 
     var bbutton = document.getElementById("bbutton");
     bbutton.onclick = function() {

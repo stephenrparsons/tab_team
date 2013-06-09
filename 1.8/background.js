@@ -65,15 +65,57 @@ chrome.extension.onMessage.addListener(
 			left_trigger();
 		} else if (request.greeting == "uclick" && !triggered){
 			triggered = true;
-			// unpin_all();
+			unpin_all();
 		} else if (request.greeting == "bclick" && !triggered){
 			triggered = true;
-			// badge_toggle();
+			badge_toggle();
 		} else if (request.greeting == "rclick" && !triggered){
 			triggered = true;
-			// refresh_all();
+			refresh_all();
 		}
 });
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+// unpin all tabs
+function unpin_all() {
+	console.log("------------------------------------------------");
+	console.log("triggered by ubutton");
+	chrome.tabs.query({currentWindow:true}, function(tabs) {
+		for(var tab = 0; tab<tabs.length; tab++){
+			chrome.tabs.update(tabs[tab].id, {pinned:false});
+			console.log(tabs[tab].id + " unpinned");
+		}
+	console.log("completed unpinning");
+	triggered = false;
+	}); 
+}
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+// toggle badge on or off
+function badge_toggle() {
+	console.log("------------------------------------------------");
+	console.log("triggered by bbutton");
+	// toggle
+	triggered = false;
+	}
+/////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+// refresh all tabs
+function refresh_all() {
+	console.log("------------------------------------------------");
+	console.log("triggered by rbutton");
+	chrome.tabs.query({currentWindow:true}, function(tabs) {
+		for(var tab = 0; tab<tabs.length; tab++){
+			chrome.tabs.reload(tabs[tab].id, null, null);
+			console.log(tabs[tab].id + " refreshed");
+		}
+	});
+	console.log("completed refreshing");
+	triggered = false;
+}
 /////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////////////
