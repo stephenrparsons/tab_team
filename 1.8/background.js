@@ -63,6 +63,15 @@ chrome.extension.onMessage.addListener(
 		} else if (request.greeting == "zclick" && !triggered){
 			triggered = true;
 			left_trigger();
+		} else if (request.greeting == "uclick" && !triggered){
+			triggered = true;
+			// unpin_all();
+		} else if (request.greeting == "bclick" && !triggered){
+			triggered = true;
+			// badge_toggle();
+		} else if (request.greeting == "rclick" && !triggered){
+			triggered = true;
+			// refresh_all();
 		}
 });
 /////////////////////////////////////////////////////////////////////////////////////////

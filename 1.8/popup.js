@@ -14,4 +14,30 @@ window.onload = function() {
         chrome.extension.sendMessage({greeting: "zclick"});
 
     }
+
+    // do the same for other buttons
+    var xbutton = document.getElementById("xbutton");
+    xbutton.onclick = function() {
+        console.log("------------------------------------------------");
+        console.log("triggered by xbutton");
+        chrome.extension.sendMessage({greeting: "xclick"});
+
+    var rbutton = document.getElementById("rbutton");
+    rbutton.onclick = function() {
+        console.log("------------------------------------------------");
+        console.log("triggered by rbutton");
+        chrome.extension.sendMessage({greeting: "rclick"});
+
+    var ubutton = document.getElementById("ubutton");
+    ubutton.onclick = function() {
+        console.log("------------------------------------------------");
+        console.log("triggered by ubutton");
+        chrome.extension.sendMessage({greeting: "uclick"});
+
+    var bbutton = document.getElementById("bbutton");
+    bbutton.onclick = function() {
+        console.log("------------------------------------------------");
+        console.log("triggered by bbutton");
+        chrome.extension.sendMessage({greeting: "bclick"});
+    }
 }
