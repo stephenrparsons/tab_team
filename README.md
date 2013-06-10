@@ -9,7 +9,7 @@ To install: <br>
 To use: <br>
 	-With multiple tabs open, pressing ctrl-shift-z will take all open tabs to the left of the current tab and pin them into a cluster <br>
 	-Pressing ctrl-shift-x will cycle through your clusters <br>
-	-The tab team icon in the upper-right corner of the browser allows you to:<br>
+	-The tab team icon in the upper-right corner of the browser allows you to:
 	<ul>
 		<li>Perform both of the previous actions</li>
 		<li>Refresh all tabs. Used if tab team is updated to a more recent version and needs to be updated across all tabs</li>
