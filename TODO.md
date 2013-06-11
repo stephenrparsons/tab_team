@@ -2,7 +2,6 @@ add icons or change menu for popup<br>
 
 html local storage <br>
 -tabs<br>
--badge toggle option<br>
 
 gray icon/message for domains on which it does not run <br>
 
