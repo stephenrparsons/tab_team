@@ -30,12 +30,30 @@ function pinTabs(cluster, pinOrunPin){
 // Initializations
 var roster = [];
 roster[0] = new Cluster();
-// badges:
-chrome.browserAction.setBadgeText({text:"1/1"});
-chrome.browserAction.setBadgeBackgroundColor({color:"#2980B9"});
 var rosterCounter = 0;
 var triggered = false;
 var badge_on = true;
+
+// badges:
+// the background color is the same no matter what
+chrome.browserAction.setBadgeBackgroundColor({color:"#2980B9"});
+// check first to see if they already have a preference stored in local html storage
+if (localStorage.getItem("badge_toggle")) {
+	// they have it stored as on, so turn it on
+	if (localStorage.getItem("badge_toggle") == "on") {
+		var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
+		chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
+	}
+	// they have it turned off, so turn it off
+	else if (localStorage.getItem("badge_toggle") == "off") {
+		chrome.browserAction.setBadgeText({text: ""});
+	}
+}
+// they have no preference, so turn it on
+else if (!localStorage.getItem("badge_toggle")) {
+	var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
+	chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
+}
 //////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -101,10 +119,13 @@ function badge_toggle() {
 	if (badge_on == true)
 	{
 		chrome.browserAction.setBadgeText({text:""});
+		// save preference to local storage
+		localStorage.setItem("badge_toggle", "off");
 		badge_on = false;
 	} else {
 		var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
 		chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
+		localStorage.setItem("badge_toggle", "on");
 		badge_on = true;
 	}
 	triggered = false;
@@ -150,8 +171,11 @@ function trigger(){
 		}
 
 		//update the badge
-		var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
-		chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
+		// if the badge is turned on
+		if (localStorage.getItem("badge_toggle") == "on") {
+			var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
+			chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
+		}
 	});
 }
 /////////////////////////////////////////////////////////////////////////////////////////
