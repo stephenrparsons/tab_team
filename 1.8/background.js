@@ -101,7 +101,7 @@ function unpin_all() {
 	console.log("------------------------------------------------");
 	console.log("triggered by ubutton");
 	chrome.tabs.query({currentWindow:true}, function(tabs) {
-		for(var tab = 0; tab<tabs.length; tab++){
+		for(var tab = tabs.length-1; tab>=0; tab--){
 			chrome.tabs.update(tabs[tab].id, {pinned:false});
 			console.log(tabs[tab].id + " unpinned");
 		}
