@@ -25,6 +25,7 @@ button {
 	font-size: 7pt;
 	font-family: arial;
 	vertical-align: middle;
+	cursor: pointer;
 }
 hr {
 	padding: 0px;
