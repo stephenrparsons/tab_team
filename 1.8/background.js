@@ -33,26 +33,19 @@ roster[0] = new Cluster();
 var rosterCounter = 0;
 var triggered = false;
 var badge_on = true;
+localStorage.setItem("badge_toggle", "on");
 
 // badges:
 // the background color is the same no matter what
 chrome.browserAction.setBadgeBackgroundColor({color:"#2980B9"});
-// check first to see if they already have a preference stored in local html storage
-if (localStorage.getItem("badge_toggle")) {
-	// they have it stored as on, so turn it on
-	if (localStorage.getItem("badge_toggle") == "on") {
-		var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
-		chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
-	}
-	// they have it turned off, so turn it off
-	else if (localStorage.getItem("badge_toggle") == "off") {
-		chrome.browserAction.setBadgeText({text: ""});
-	}
-}
-// they have no preference, so turn it on
-else if (!localStorage.getItem("badge_toggle")) {
+// they have it stored as on, so turn it on
+if (localStorage.getItem("badge_toggle") == "on") {
 	var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
 	chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
+}
+// they have it turned off, so turn it off
+else if (localStorage.getItem("badge_toggle") == "off") {
+	chrome.browserAction.setBadgeText({text: ""});
 }
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -247,6 +240,12 @@ function left_trigger(){
 			pin_tabs_to_left(unPinnedTabs);
 		}
 	});
+	//update the badge
+	// if the badge is turned on
+	if (localStorage.getItem("badge_toggle") == "on") {
+		var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
+		chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
+	}
 }
 /////////////////////////////////////////////////////////////////////////////////////////
 
