@@ -1,9 +1,12 @@
 body {
 	background-color: #ecf0f1;
-	width: 125px;
+	width: 150px;
 	font-family: arial;
 	font-size: 9pt;
 	vertical-align: center;
+	margin: 0px;
+	padding: 0px;
+	border: none;
 }
 h1 {
 	font-family: arial;
@@ -14,23 +17,18 @@ h1 {
 	padding: 0px;
 }
 button {
-	width: 31px;
-	height: 31px;
-	border: solid;
-	border-width: 2px;
-	border-color: black;
+	width: 150px;
+	height: 37px;
 	padding: 0px;
-	margin: 5px;
+	border: none;
+	background: none;
+	margin: 0px;
 	margin-left: 0px;
 	font-size: 7pt;
 	font-family: arial;
 	vertical-align: middle;
 	cursor: pointer;
 }
-hr {
-	padding: 0px;
-	margin: 0px;
-	color: #7f8c8d;
-	background-color: #7f8c8d;
-	height: 1px;
+#xbuttonimg:hover {
+	src: "./ctrl_x_button_hover.png";
 }
