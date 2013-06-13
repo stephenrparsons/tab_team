@@ -106,6 +106,16 @@ function unpin_all() {
 			console.log(tabs[tab].id + " unpinned");
 		}
 	console.log("completed unpinning");
+	// clear the roster so there are no groups
+	console.log("clearing roster...");
+	roster.length = 0;
+	roster[0] = new Cluster();
+	rosterCounter = 0;
+	// reset badge as well
+	if (localStorage.getItem("badge_toggle") == "on") {
+		chrome.browserAction.setBadgeText({text: "1/1"});
+	}
+	console.log("roster cleared");
 	triggered = false;
 	}); 
 }
