@@ -11,7 +11,7 @@
     "default_popup": "popup.html"  
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["background.js", "trigger.js"]
   },
   "permissions": [   
   "tabs"
