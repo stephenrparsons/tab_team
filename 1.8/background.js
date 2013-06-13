@@ -8,25 +8,6 @@ function Cluster(){
 //////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
-// given a cluster and a boolean, either pin or unPin all the tabs in the cluster
-// pinOrunPin == true ? pin : unPin
-function pinTabs(cluster, pinOrunPin){
-	clusterTabs = cluster.tabs;
-	if(clusterTabs!=null){
-		if(!pinOrunPin){
-			for(var tabIndex = clusterTabs.length-1; tabIndex>=0; tabIndex--){
-				chrome.tabs.update(clusterTabs[tabIndex].id, {pinned:pinOrunPin});
-			}
-		} else {
-			for(var tabIndex = 0; tabIndex<clusterTabs.length; tabIndex++){
-				chrome.tabs.update(clusterTabs[tabIndex].id, {pinned:pinOrunPin});
-			}
-		}
-	}
-}
-//////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////////
 // Initializations
 var roster = [];
 roster[0] = new Cluster();
@@ -155,80 +136,5 @@ function refresh_all() {
 	});
 	console.log("completed refreshing");
 	triggered = false;
-}
-/////////////////////////////////////////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////////////////////////////////////////
-// handle everything that happens when ctrl+shift+z is pressed
-function left_trigger(){
-	console.log("------------------------------------------------");
-	console.log("triggered by shift+z");
-
-	// get all the unpinned tabs:
-	var len = 0;
-	var unPinnedTabs = [];
-	chrome.tabs.query({pinned:false}, function(tabs) {
-		for(var tab = 0; tab<tabs.length; tab++){
-			unPinnedTabs[tab] = tabs[tab];
-		} 
-		len = unPinnedTabs.length;
-
-		if(len != 0){
-			pin_tabs_to_left(unPinnedTabs);
-		}
-	});
-	//update the badge
-	// if the badge is turned on
-	// TODO: figure out why this is not updating the badge like it should
-		// the function below is properly updating the badge but for some reason
-		// the roster length or something is not updated at this point
-		// because the number is always off by 1. 
-		// although it seems that it should be because of pin_tabs_to_left
-		// which is called above. 
-		// if you switch away to another cluster and come back, everything is fine.
-		// any ideas, ben?
-}
-/////////////////////////////////////////////////////////////////////////////////////////
-
-/////////////////////////////////////////////////////////////////////////////////////////
-// pin all tabs to the left of the active tab
-function pin_tabs_to_left(unPinnedTabs){
-	chrome.tabs.query({active: true}, function(tabs){
-		var active_tab = tabs[0]; // should be the only tab in tabs
-
-		var tabs_to_pin = [];
-		var index = 0;
-		while (unPinnedTabs[index].id != active_tab.id){
-			tabs_to_pin[index] = unPinnedTabs[index];
-			index+=1;
-		}
-
-		var tabs_to_keep_unpinned = [];
-		while (index < unPinnedTabs.length){
-			tabs_to_keep_unpinned[index] = unPinnedTabs[index];
-			index+=1;
-		}
-
-		if(tabs_to_pin.length > 0){
-			var new_cluster = new Cluster();
-			new_cluster.tabs = tabs_to_pin
-			pinTabs(new_cluster, true);
-			// potentially change this so that if the active id was previously in this group,
-			// then keep that one
-			new_cluster.activeId = tabs_to_pin[0].id;
-
-			var new_unpinned_cluster = new Cluster();
-			new_unpinned_cluster.tabs = tabs_to_keep_unpinned;
-			chrome.tabs.query({active:true, windowId:chrome.windows.WINDOW_ID_CURRENT}, function(tabs){
-				new_unpinned_cluster.activeId = tabs[0].id; // tabs[0] should be the only tab in tabs
-			});
-
-			roster.splice(rosterCounter, 1, new_cluster, new_unpinned_cluster);
-			rosterCounter = (rosterCounter + 1) % roster.length;
-		}
-
-		triggered = false;
-		update_badge();
-	});
 }
 /////////////////////////////////////////////////////////////////////////////////////////
