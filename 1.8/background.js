@@ -38,14 +38,24 @@ localStorage.setItem("badge_toggle", "on");
 // badges:
 // the background color is the same no matter what
 chrome.browserAction.setBadgeBackgroundColor({color:"#2980B9"});
-// they have it stored as on, so turn it on
-if (localStorage.getItem("badge_toggle") == "on") {
-	var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
-	chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
-}
-// they have it turned off, so turn it off
-else if (localStorage.getItem("badge_toggle") == "off") {
-	chrome.browserAction.setBadgeText({text: ""});
+update_badge();
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+// Update the badge text. Even if the user has the badge toggled off, this will just 
+// do nothing, so call it every time anyway.
+function update_badge() {
+	// they have it stored as on, so turn it on
+	if (localStorage.getItem("badge_toggle") == "on") {
+		var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
+		chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
+	}
+	// they have it turned off, so turn it off
+	else if (localStorage.getItem("badge_toggle") == "off") {
+		chrome.browserAction.setBadgeText({text: ""});
+	}
 }
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -105,9 +115,7 @@ function unpin_all() {
 	roster[0] = new Cluster();
 	rosterCounter = 0;
 	// reset badge as well
-	if (localStorage.getItem("badge_toggle") == "on") {
-		chrome.browserAction.setBadgeText({text: "1/1"});
-	}
+	update_badge();
 	console.log("roster cleared");
 	triggered = false;
 	}); 
@@ -126,10 +134,9 @@ function badge_toggle() {
 		localStorage.setItem("badge_toggle", "off");
 		badge_on = false;
 	} else {
-		var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
-		chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
 		localStorage.setItem("badge_toggle", "on");
 		badge_on = true;
+		update_badge();
 	}
 	triggered = false;
 	}
@@ -173,12 +180,7 @@ function trigger(){
 			non_empty_to_next(unPinnedTabs);
 		}
 
-		//update the badge
-		// if the badge is turned on
-		if (localStorage.getItem("badge_toggle") == "on") {
-			var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
-			chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
-		}
+		update_badge();
 	});
 }
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -218,6 +220,7 @@ function non_empty_to_next(unPinnedTabs){
 	chrome.tabs.update(roster[rosterCounter].activeId, {active:true}, function(tab){
 		triggered = false;
 	});
+	update_badge();
 }
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -250,10 +253,6 @@ function left_trigger(){
 		// which is called above. 
 		// if you switch away to another cluster and come back, everything is fine.
 		// any ideas, ben?
-	if (localStorage.getItem("badge_toggle") == "on") {
-		var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
-		chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
-	}
 }
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -295,6 +294,7 @@ function pin_tabs_to_left(unPinnedTabs){
 		}
 
 		triggered = false;
+		update_badge();
 	});
 }
 /////////////////////////////////////////////////////////////////////////////////////////
