@@ -242,6 +242,14 @@ function left_trigger(){
 	});
 	//update the badge
 	// if the badge is turned on
+	// TODO: figure out why this is not updating the badge like it should
+		// the function below is properly updating the badge but for some reason
+		// the roster length or something is not updated at this point
+		// because the number is always off by 1. 
+		// although it seems that it should be because of pin_tabs_to_left
+		// which is called above. 
+		// if you switch away to another cluster and come back, everything is fine.
+		// any ideas, ben?
 	if (localStorage.getItem("badge_toggle") == "on") {
 		var rosterLength = roster.length>1 ? (""+(roster.length)) : "1";
 		chrome.browserAction.setBadgeText({text:""+(rosterCounter+1)+"/"+rosterLength});
