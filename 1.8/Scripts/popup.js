@@ -43,4 +43,11 @@ window.onload = function() {
         console.log("triggered by bbutton");
         chrome.extension.sendMessage({greeting: "bclick"});
     }
+
+    var vbutton = document.getElementById("vbutton");
+    vbutton.onclick = function() {
+        console.log("------------------------------------------------");
+        console.log("triggered by vbutton");
+        chrome.extension.sendMessage({greeting: "vclick"});
+    }
 }
