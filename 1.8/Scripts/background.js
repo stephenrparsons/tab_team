@@ -27,7 +27,15 @@ update_badge();
 chrome.runtime.onInstalled.addListener(function(details) {
 	triggered = true;
 	refresh_all();
+	open_website_install();
 });
+//////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+// open website to the install page
+function open_website_install() {
+	chrome.tabs.create({url:"http://www.tabteam.weebly.com/install.html"});
+}
 //////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -83,14 +91,14 @@ chrome.extension.onMessage.addListener(
 			refresh_all();
 		} else if (request.greeting == "vclick" && !triggered) {
 			triggered = true;
-			open_website();
+			open_website_home();
 		}
 });
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
-// open the website
-function open_website() {
+// open the website to the home page
+function open_website_home() {
 	console.log("------------------------------------------------");
 	console.log("triggered by vbutton");
 	chrome.tabs.create({url:"http://www.tabteam.weebly.com"});
