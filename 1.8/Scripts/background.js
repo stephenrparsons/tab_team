@@ -23,6 +23,14 @@ update_badge();
 //////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
+// refresh all tabs on install and update
+chrome.runtime.onInstalled.addListener(function(details) {
+	triggered = true;
+	refresh_all();
+});
+//////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
 // Update the badge text. Even if the user has the badge toggled off, this will just 
 // do nothing, so call it every time anyway.
 function update_badge() {
@@ -135,14 +143,16 @@ function badge_toggle() {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
-// refresh all tabs
+// refresh all tabs (except chrome://extensions/ because that messes things up)
 function refresh_all() {
 	console.log("------------------------------------------------");
 	console.log("triggered by rbutton");
 	chrome.tabs.query({currentWindow:true}, function(tabs) {
 		for(var tab = 0; tab<tabs.length; tab++){
-			chrome.tabs.reload(tabs[tab].id, null, null);
-			console.log(tabs[tab].id + " refreshed");
+			if(tabs[tab].url != "chrome://extensions/"){
+				chrome.tabs.reload(tabs[tab].id, null, null);
+				console.log(tabs[tab].id + " refreshed");
+			}
 		}
 	});
 	console.log("completed refreshing");
