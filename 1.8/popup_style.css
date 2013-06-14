@@ -29,6 +29,7 @@ button {
 	vertical-align: middle;
 	cursor: pointer;
 }
+/* all these buttons... */
 a.xbutton {
 	display: block;
 	width: 150px;
@@ -52,4 +53,40 @@ a.zbutton {
 }
 a.zbutton:hover {
 	background-image: url('Pics/ctrl_x_button_hover.png');
+}
+a.rbutton {
+	display: block;
+	width: 150px;
+	height: 37px;
+	background-image: url('Pics/r_button.png');
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+a.rbutton:hover {
+	background-image: url('Pics/r_button_hover.png');
+}
+a.ubutton {
+	display: block;
+	width: 150px;
+	height: 37px;
+	background-image: url('Pics/u_button.png');
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+a.ubutton:hover {
+	background-image: url('Pics/u_button_hover.png');
+}
+a.bbutton {
+	display: block;
+	width: 150px;
+	height: 37px;
+	background-image: url('Pics/b_button.png');
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+a.bbutton:hover {
+	background-image: url('Pics/b_button_hover.png');
 }
