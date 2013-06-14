@@ -13,3 +13,5 @@ website!<br>
 make it work in multiple windows<br>
 
 address possible autofocus issue (maybe only linux?)<br>
+
+add website button to popup<br>
