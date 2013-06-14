@@ -52,7 +52,7 @@ a.zbutton {
 	border: none;
 }
 a.zbutton:hover {
-	background-image: url('Pics/ctrl_x_button_hover.png');
+	background-image: url('Pics/ctrl_z_button_hover.png');
 }
 a.rbutton {
 	display: block;
