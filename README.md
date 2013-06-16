@@ -1,19 +1,27 @@
-<p><b>Welcome to Tab Team. </b>
-Tab Team is an extension to create grouped tabs.</p>
-<p>
-To install: <br>
-	-Open Google Chrome and navigate to chrome://extensions/ <br>
-	-Ensure that Developer Mode is enabled <br>
-	-Load unpacked extension and choose the most recent version (current 1.8) 
-</p><p>
-To use: <br>
-	-With multiple tabs open, pressing ctrl-shift-z will take all open tabs to the left of the current tab and pin them into a cluster <br>
-	-Pressing ctrl-shift-x will cycle through your clusters <br>
-	-The tab team icon in the upper-right corner of the browser allows you to:
-	<ul>
-		<li>Perform both of the previous actions</li>
-		<li>Refresh all tabs. Used if tab team is updated to a more recent version and needs to be updated across all tabs</li>
-		<li>Unpin all tabs. Used if something goes wrong, or if you would like to quickly unpin all tabs for another reason</li>
-		<li>Toggle the badge. The badge is displayed on the tab team icon and shows your current cluster as well as the total clusters. If you prefer not to have it, you can turn the badge off or back on here</li>
-	</ul>
-	-That's it!</p>
+<h5>What is it?</h5>
+Tab Team is a Chrome extension to organize tabs into groups.
+
+<h5>Why do I need it?</h5>
+You frequently manage to clutter Google Chrome with many tabs at once, which makes it more difficult to navigate through your projects.
+ 
+<h5>Where can I get it?</h5>
+You can get Tab Team from [the chrome web store] or from <a href="http://github.com/blackstache/tab_team">github.</a>
+
+<h5>How do I use it?</h5>
+Use the icon in the upper-right corner of the browser to:
+<ul>
+<li>Cycle from one group of tabs to the next. Keyboard shortcut: <b>ctrl-shift-x</b></li>
+
+<li>Pin all tabs to the left of the current tab into a new group. Keyboard shortcut: <b>ctrl-shift-z</b></li>
+
+<li>Refresh all tabs.</li>
+
+<li>Unpin all tabs and reset groups.</li>
+
+<li>Is that fraction showing tab group information annoying? Click this to make it go away (or come back).</li>
+
+<li>Visit our website!</li>
+</ul>
+
+<h5>Who are you?</h5>
+We are the Tab Team ... team. Two college kids who you can contact <a href="mailto:tabteamext@gmail.com">here</a> or give money to [here].

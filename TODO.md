@@ -1,7 +1,3 @@
-gray icon/message for domains on which it does not run <br>
-
-refresh all on update/install<br>
-
 make popup come back when switching groups, if this is possible<br>
 
 website!<br>
@@ -11,3 +7,6 @@ website!<br>
 make it work in multiple windows<br>
 
 change order of buttons on website image<br>
+
+make browser action icon look better on other backgrounds<br>
+
