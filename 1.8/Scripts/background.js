@@ -14,7 +14,11 @@ roster[0] = new Cluster();
 var rosterCounter = 0;
 var triggered = false;
 var badge_on = true;
-localStorage.setItem("badge_toggle", "on");
+// on install/update, check to see if they have already installed it and have a preference
+// so if no existing preference, make it on. otherwise leave it alone
+if (!localStorage.getItem("badge_toggle")) {
+	localStorage.setItem("badge_toggle", "on");
+}
 
 // badges:
 // the background color is the same no matter what
