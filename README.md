@@ -14,11 +14,11 @@ Use the icon in the upper-right corner of the browser to:
 
 <li>Pin all tabs to the left of the current tab into a new group. Keyboard shortcut: <b>ctrl-shift-z</b></li>
 
-<li>Refresh all tabs.</li>
-
 <li>Unpin all tabs and reset groups.</li>
 
 <li>Is that fraction showing tab group information annoying? Click this to make it go away (or come back).</li>
+
+<li>Refresh all tabs.</li>
 
 <li>Visit our website!</li>
 </ul>
