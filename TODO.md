@@ -29,3 +29,5 @@ look into the free bing ads we should have with godaddy<br>
 make install page on website<br>
 
 make sure we are pitching it in five seconds...applies to website and web store page<br>
+
+change web store text from "an extension to organize tabs into groups" to "organize tabs into groups" or something<br>
