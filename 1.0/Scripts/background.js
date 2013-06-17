@@ -38,7 +38,7 @@ chrome.runtime.onInstalled.addListener(function(details) {
 //////////////////////////////////////////////////////////////////////////////////////
 // open website to the install page
 function open_website_install() {
-	chrome.tabs.create({url:"http://www.tabteam.weebly.com/install.html"});
+	chrome.tabs.create({url:"http://www.tabteamext.com/install"});
 }
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -105,7 +105,7 @@ chrome.extension.onMessage.addListener(
 function open_website_home() {
 	console.log("------------------------------------------------");
 	console.log("triggered by vbutton");
-	chrome.tabs.create({url:"http://www.tabteam.weebly.com"});
+	chrome.tabs.create({url:"http://www.tabteamext.com"});
 	triggered = false; 
 }
 /////////////////////////////////////////////////////////////////////////////////////////
