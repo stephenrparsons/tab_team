@@ -7,7 +7,7 @@
              "48": "Pics/icon.png",
              "128": "Pics/icon.png" },
   "browser_action": {
-    "default_icon": "Pics/icon.png",
+    "default_icon": "Pics/browser_action_icon.png",
     "default_popup": "popup.html",
     "default_title": "Tab Team"  
   },
