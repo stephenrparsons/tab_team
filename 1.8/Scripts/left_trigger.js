@@ -7,14 +7,11 @@ function left_trigger(){
 	// get all the unpinned tabs:
 	var len = 0;
 	var unPinnedTabs = [];
-	chrome.tabs.query({pinned:false}, function(tabs) {
-		for(var tab = 0; tab<tabs.length; tab++){
-			unPinnedTabs[tab] = tabs[tab];
-		} 
-		len = unPinnedTabs.length;
+	chrome.tabs.query({pinned:false, lastFocusedWindow:true}, function(tabs) {
+		len = tabs.length;
 
 		if(len != 0){
-			pin_tabs_to_left(unPinnedTabs);
+			pin_tabs_to_left(tabs);
 		}
 	});
 }

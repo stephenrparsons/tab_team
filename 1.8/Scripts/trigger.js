@@ -7,17 +7,14 @@ function trigger(){
 	// get all the unpinned tabs:
 	var len = 0;
 	var unPinnedTabs = [];
-	chrome.tabs.query({pinned:false}, function(tabs) {
-		for(var tab = 0; tab<tabs.length; tab++){
-			unPinnedTabs[tab] = tabs[tab];
-		} 
-		len = unPinnedTabs.length;
+	chrome.tabs.query({pinned:false, lastFocusedWindow:true}, function(tabs) {
+		len = tabs.length;
 		//Deal with the possible situations the browser can go into:
 		if(len == 0){
 			is_empty_to_next();
 		} 
 		else if(len !=0){
-			non_empty_to_next(unPinnedTabs);
+			non_empty_to_next(tabs);
 		}
 		update_badge();
 	});
