@@ -11,3 +11,5 @@ make google plus page because google likes that<br>
 make a legitimate screenshot<br>
 
 expense spreadsheet<br>
+
+the explanatory text on the webstore should be different/better formatted <br>
