@@ -35,3 +35,5 @@ make sure we are pitching it in five seconds...applies to website and web store 
 change web store text from "an extension to organize tabs into groups" to "organize tabs into groups" or something<br>
 
 maybe make permissions implemented after install, with a popup defending the permissions <i>before</i> the user is ever asked to give us that access<br>
+
+maybe make the page look different for users who already installed tab team<br>
