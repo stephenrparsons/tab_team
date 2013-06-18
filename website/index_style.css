@@ -10,11 +10,15 @@
 }
 #header_image_container {
 	height: 100%;
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
 }
 body {
 	margin: 0px;
 	padding: 0px;
 	border: none;
+}
+#main_content {
+	width: 60%;
+	margin: 0 auto;
 }
