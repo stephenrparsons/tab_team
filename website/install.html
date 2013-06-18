@@ -6,12 +6,37 @@
 	<meta name="keywords" content="tab team, chrome, extension, organize tabs, organize chrome tabs, chrome organize tabs, chrome tab folders">
 	<meta name="description" content="Tab Team is a Chrome extension to organize tabs into groups.">
 	<meta name="author" content="Ben Eskildsen and Stephen Parsons">
+	<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/ophdeklmpgjdljnafpcegpofcioenmod">
 </head>
 <body>
 	<div id="header">
 		<div id="header_image_container">
 			<img id="header_img" src="./img/header_img.png">
 		</div>
+	</div>
+	<div id="main_content">
+		<h1>What is it?</h1>
+		<p>Tab Team is a Chrome extension to organize tabs into groups.</p>
+		<h1>Why do I need it?</h1>
+		<p>You frequently manage to clutter Google Chrome with many tabs at once, which makes it more difficult to navigate through your projects.</p>
+		<p>Here, doesn't this look better?</p>
+		<div id="flash_container">
+			<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+			codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"
+			width="960px"
+			id="mymoviename">
+				<param name="movie" value="example.swf"/>
+				<param name="quality" value="high"/>
+				<param name="bgcolor" value="#ffffff"/>
+				<embed src="img/tab_team960x80.swf" quality="high" bgcolor="#ffffff"
+				width="960px" height="100 px"
+				name="mymoviename" align="" type="application/x-shockwave-flash"
+				pluginspage="http://www.macromedia.com/go/getflashplayer" margin="0 px"
+				alt="You're missing out on a really cool animation of Tab Team making life easier. Check us out on a computer!">
+				</embed>
+			</object>
+		</div>
+		<button onclick="chrome.webstore.install()">Add to Chrome</button>
 	</div>
 </body>
 </html>
