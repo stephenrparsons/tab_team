@@ -22,12 +22,11 @@ body {
 #main_content {
 	width: 1080px;
 	margin: 0 auto;
-	color: #2c3e50;
+	color: #555555;
 	font-size: 12pt;
 	font-family: helvetica;
 }
 h1 {
-	color: #2c3e50;
 	font-size: 16pt;
 	font-family: helvetica;
 }
