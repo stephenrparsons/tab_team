@@ -1,6 +1,6 @@
 {
   "name": "Tab Team",
-  "version": "1.0",
+  "version": "1.0.1",
   "manifest_version": 2,
   "description": "An extension to organize tabs into groups.",
   "icons": { "16": "Pics/icon.png",
