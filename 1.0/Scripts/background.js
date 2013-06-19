@@ -115,7 +115,7 @@ function open_website_home() {
 function unpin_all() {
 	console.log("------------------------------------------------");
 	console.log("triggered by ubutton");
-	chrome.tabs.query({currentWindow:true}, function(tabs) {
+	chrome.tabs.query({}, function(tabs) {
 		for(var tab = tabs.length-1; tab>=0; tab--){
 			chrome.tabs.update(tabs[tab].id, {pinned:false});
 			console.log(tabs[tab].id + " unpinned");
@@ -159,7 +159,7 @@ function badge_toggle() {
 function refresh_all() {
 	console.log("------------------------------------------------");
 	console.log("triggered by rbutton");
-	chrome.tabs.query({currentWindow:true}, function(tabs) {
+	chrome.tabs.query({}, function(tabs) {
 		for(var tab = 0; tab<tabs.length; tab++){
 			if(tabs[tab].url != "chrome://extensions/"){
 				chrome.tabs.reload(tabs[tab].id, null, null);

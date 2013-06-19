@@ -47,7 +47,7 @@ function non_empty_to_next(unPinnedTabs){
 	roster[rosterCounter] = newCluster;
 	pinTabs(roster[rosterCounter], true);
 	//find the tab that is active:
-	chrome.tabs.query({active:true, windowId:chrome.windows.WINDOW_ID_CURRENT}, function(tabs){
+	chrome.tabs.query({active:true, lastFocusedWindow:true}, function(tabs){
 		newCluster.activeId = tabs[0].id; // tabs[0] should be the only tab in tabs
 	});
 	rosterCounter = (1+rosterCounter) % roster.length;
