@@ -7,7 +7,7 @@ function trigger(){
 	// get all the unpinned tabs:
 	var len = 0;
 	var unPinnedTabs = [];
-	chrome.tabs.query({pinned:false, lastFocusedWindow:true}, function(tabs) {
+	chrome.tabs.query({pinned:false, currentWindow:true}, function(tabs) {
 		len = tabs.length;
 		//Deal with the possible situations the browser can go into:
 		if(len == 0){

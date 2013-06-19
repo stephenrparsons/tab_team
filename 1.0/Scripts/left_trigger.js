@@ -6,7 +6,8 @@ function left_trigger(){
 
 	// get all the unpinned tabs:
 	var len = 0;
-	chrome.tabs.query({pinned:false, lastFocusedWindow:true}, function(tabs) {
+	var unPinnedTabs = [];
+	chrome.tabs.query({pinned:false, currentWindow:true}, function(tabs) {
 		len = tabs.length;
 
 		if(len != 0){

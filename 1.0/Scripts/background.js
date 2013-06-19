@@ -166,8 +166,8 @@ function refresh_all() {
 				console.log(tabs[tab].id + " refreshed");
 			}
 		}
+		triggered = false;
 	});
 	console.log("completed refreshing");
-	triggered = false;
 }
 /////////////////////////////////////////////////////////////////////////////////////////
