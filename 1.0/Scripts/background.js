@@ -116,7 +116,7 @@ function open_website_home() {
 function unpin_all() {
 	console.log("------------------------------------------------");
 	console.log("triggered by ubutton");
-	chrome.tabs.query({currentWindow:true}, function(tabs) {
+	chrome.tabs.query({lastFocusedWindow:true}, function(tabs) {
 		for(var tab = tabs.length-1; tab>=0; tab--){
 			chrome.tabs.update(tabs[tab].id, {pinned:false});
 			console.log(tabs[tab].id + " unpinned");
