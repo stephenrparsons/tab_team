@@ -7,7 +7,7 @@ function trigger(){
 	// get all the unpinned tabs:
 	var len = 0;
 	var unPinnedTabs = [];
-	chrome.tabs.query({pinned:false, currentWindow:true}, function(tabs) {
+	chrome.tabs.query({pinned:false, windowId:topWindow}, function(tabs) {
 		len = tabs.length;
 		//Deal with the possible situations the browser can go into:
 		if(len == 0){
@@ -47,7 +47,7 @@ function non_empty_to_next(unPinnedTabs){
 	roster[rosterCounter] = newCluster;
 	pinTabs(roster[rosterCounter], true);
 	//find the tab that is active:
-	chrome.tabs.query({active:true, lastFocusedWindow:true}, function(tabs){
+	chrome.tabs.query({active:true, windowId:topWindow}, function(tabs){
 		newCluster.activeId = tabs[0].id; // tabs[0] should be the only tab in tabs
 	});
 	rosterCounter = (1+rosterCounter) % roster.length;

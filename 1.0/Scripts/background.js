@@ -14,7 +14,10 @@ roster[0] = new Cluster();
 var rosterCounter = 0;
 var triggered = false;
 var badge_on = true;
-
+// initialize the topWindow to the original window so that the triggers
+// actually work
+var topWindow = chrome.windows.WINDOW_ID_CURRENT;
+console.log(topWindow);
 // on install/update, check to see if they have already installed it and have a preference
 // so if no existing preference, make it on. otherwise leave it alone
 if (!localStorage.getItem("badge_toggle")) {
@@ -25,6 +28,26 @@ if (!localStorage.getItem("badge_toggle")) {
 // the background color is the same no matter what
 chrome.browserAction.setBadgeBackgroundColor({color:"#2980B9"});
 update_badge();
+//////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+// listen for the window change and update topWindow
+chrome.windows.onFocusChanged.addListener(updateWindow);
+//////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////
+// update the window to the last focused window
+function updateWindow(givenWindow) {
+	// make sure nothing goes down while updating the window
+	triggered = true;
+	console.log("------------------------------------------------");
+	console.log("maybe gonna update a window now");
+	if (givenWindow.width != 150) {
+		console.log("the old window is " + topWindow + " the new window is " + givenWindow);
+		topWindow = givenWindow;
+	}
+	triggered = false;
+}
 //////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -116,7 +139,7 @@ function open_website_home() {
 function unpin_all() {
 	console.log("------------------------------------------------");
 	console.log("triggered by ubutton");
-	chrome.tabs.query({lastFocusedWindow:true}, function(tabs) {
+	chrome.tabs.query({windowId:topWindow}, function(tabs) {
 		for(var tab = tabs.length-1; tab>=0; tab--){
 			chrome.tabs.update(tabs[tab].id, {pinned:false});
 			console.log(tabs[tab].id + " unpinned");
@@ -160,7 +183,7 @@ function badge_toggle() {
 function refresh_all() {
 	console.log("------------------------------------------------");
 	console.log("triggered by rbutton");
-	chrome.tabs.query({currentWindow:true}, function(tabs) {
+	chrome.tabs.query({windowId:topWindow}, function(tabs) {
 		for(var tab = 0; tab<tabs.length; tab++){
 			if(tabs[tab].url != "chrome://extensions/"){
 				chrome.tabs.reload(tabs[tab].id, null, null);

@@ -6,7 +6,7 @@ function left_trigger(){
 
 	// get all the unpinned tabs:
 	var len = 0;
-	chrome.tabs.query({pinned:false, lastFocusedWindow:true}, function(tabs) {
+	chrome.tabs.query({pinned:false, windowId:topWindow}, function(tabs) {
 		len = tabs.length;
 
 		if(len != 0){
@@ -19,7 +19,7 @@ function left_trigger(){
 /////////////////////////////////////////////////////////////////////////////////////////
 // pin all tabs to the left of the active tab
 function pin_tabs_to_left(unPinnedTabs){
-	chrome.tabs.query({active: true, lastFocusedWindow:true}, function(tabs){
+	chrome.tabs.query({active: true, windowId:topWindow}, function(tabs){
 		var active_tab = tabs[0]; // should be the only tab in tabs
 
 		var tabs_to_pin = [];
