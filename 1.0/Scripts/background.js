@@ -14,6 +14,11 @@ roster[0] = new Cluster();
 var rosterCounter = 0;
 var triggered = false;
 var badge_on = true;
+// I (stephen) could not find a better way to do this variable
+// as in, I am not going to try to get it from the CSS file unless someone
+// shows me an actual way to do it. Everything I could find online looked
+// really complicated
+var popupWidth = 150;
 // initialize the topWindow to the original window so that the triggers
 // actually work
 var topWindow = chrome.windows.WINDOW_ID_CURRENT;
@@ -42,7 +47,7 @@ function updateWindow(givenWindow) {
 	triggered = true;
 	console.log("------------------------------------------------");
 	console.log("maybe gonna update a window now");
-	if (givenWindow.width != 150) {
+	if (givenWindow.width != popupWidth) {
 		console.log("the old window is " + topWindow + " the new window is " + givenWindow);
 		topWindow = givenWindow;
 	}
