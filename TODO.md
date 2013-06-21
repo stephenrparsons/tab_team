@@ -31,3 +31,5 @@ maybe make permissions implemented after install, with a popup defending the per
 maybe make the page look different for users who already installed tab team<br>
 
 look into changing website animation to gif so it will work on more devices and be easier to work with<br>
+
+replace the 150 denoting the popup size with a variable popupSize = 150. Good practice<br>
