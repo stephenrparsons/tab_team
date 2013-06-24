@@ -35,3 +35,5 @@ look into changing website animation to gif so it will work on more devices and 
 make it clear that tab team does not work on the chrome:// domain because my brother thought it wasn't working<br>
 
 make it only mess with one window at a time<br>
+
+keyboard shortcut (ctrl-shift-r (reset) or ctrl-shift-c (clear))<br>
