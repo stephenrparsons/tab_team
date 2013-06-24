@@ -33,3 +33,5 @@ maybe make the page look different for users who already installed tab team<br>
 look into changing website animation to gif so it will work on more devices and be easier to work with<br>
 
 make it clear that tab team does not work on the chrome:// domain because my brother thought it wasn't working<br>
+
+make it only mess with one window at a time<br>
