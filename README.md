@@ -5,7 +5,7 @@ Tab Team is a Chrome extension to organize tabs into groups.
 You frequently manage to clutter Google Chrome with many tabs at once, which makes it more difficult to navigate through your projects.
  
 <h5>Where can I get it?</h5>
-You can get Tab Team from [the chrome web store] or from <a href="http://github.com/blackstache/tab_team">github.</a>
+You can get Tab Team from <a href="https://chrome.google.com/webstore/detail/tab-team/ophdeklmpgjdljnafpcegpofcioenmod"> here</a> or from <a href="http://github.com/blackstache/tab_team">github.</a>
 
 <h5>How do I use it?</h5>
 Use the icon in the upper-right corner of the browser to:
