@@ -24,4 +24,4 @@ Use the icon in the upper-right corner of the browser to:
 </ul>
 
 <h5>Who are you?</h5>
-We are the Tab Team ... team. Two college kids who you can contact <a href="mailto:tabteamext@gmail.com">here</a> or give money to [here].
+We are the Tab Team ... team. Two college kids who you can contact <a href="mailto:tabteamext@gmail.com">here</a>.
