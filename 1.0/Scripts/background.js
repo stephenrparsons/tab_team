@@ -9,9 +9,19 @@ function Cluster(){
 
 //////////////////////////////////////////////////////////////////////////////////////
 // Initializations
-var roster = [];
-roster[0] = new Cluster();
-var rosterCounter = 0;
+// initialize the topWindow to the original window so that the triggers
+// actually work
+var topWindow = chrome.windows.WINDOW_ID_CURRENT;
+
+// Ben, 11/29/2021
+// In order to support a separate roster per window, we add a data structure
+// above the roster which tracks clusters and index of active cluster
+// per chrome window. When the window changes we simply overwrite the roster and
+// rosterCounter vars so that all other code can work exactly the same
+const allRosters = {[topWindow]: {clusters: [new Cluster()], counter: 0}};
+let roster = allRosters[topWindow].clusters;
+let rosterCounter = allRosters[topWindow].counter;
+
 var triggered = false;
 var badge_on = true;
 // I (stephen) could not find a better way to do this variable
@@ -19,9 +29,6 @@ var badge_on = true;
 // shows me an actual way to do it. Everything I could find online looked
 // really complicated
 var popupWidth = 150;
-// initialize the topWindow to the original window so that the triggers
-// actually work
-var topWindow = chrome.windows.WINDOW_ID_CURRENT;
 console.log(topWindow);
 // on install/update, check to see if they have already installed it and have a preference
 // so if no existing preference, make it on. otherwise leave it alone
@@ -49,7 +56,15 @@ function updateWindow(givenWindow) {
 	console.log("maybe gonna update a window now");
 	if (givenWindow.width != popupWidth) {
 		console.log("the old window is " + topWindow + " the new window is " + givenWindow);
+    allRosters[topWindow].counter = rosterCounter;
+
 		topWindow = givenWindow;
+    if (allRosters[topWindow] == null) {
+      allRosters[topWindow] = {clusters: [new Cluster()], counter: 0};
+    }
+    roster = allRosters[topWindow].clusters;
+    rosterCounter = allRosters[topWindow].counter;
+    update_badge();
 	}
 	triggered = false;
 }
@@ -72,7 +87,7 @@ function open_website_install() {
 //////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
-// Update the badge text. Even if the user has the badge toggled off, this will just 
+// Update the badge text. Even if the user has the badge toggled off, this will just
 // do nothing, so call it every time anyway.
 function update_badge() {
 	// they have it stored as on, so turn it on
@@ -88,8 +103,8 @@ function update_badge() {
 //////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
-// Detect key event messages from key_event.js. distinguish between 
-// the ctrl+shift+X keypress and the ctrl+shift+Z keypress and act accordingly 
+// Detect key event messages from key_event.js. distinguish between
+// the ctrl+shift+X keypress and the ctrl+shift+Z keypress and act accordingly
 chrome.extension.onMessage.addListener(
 	function(request, sender, sendResponse) {
 		if(request.greeting == "trigger" && !triggered){
@@ -103,8 +118,8 @@ chrome.extension.onMessage.addListener(
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////
-// Detect button event messages from popup.html. distinguish between 
-// the various buttons and act accordingly 
+// Detect button event messages from popup.html. distinguish between
+// the various buttons and act accordingly
 chrome.extension.onMessage.addListener(
 	function(request, sender, sendResponse) {
 		if(request.greeting == "xclick" && !triggered){
@@ -135,7 +150,7 @@ function open_website_home() {
 	console.log("------------------------------------------------");
 	console.log("triggered by vbutton");
 	chrome.tabs.create({url:"http://www.tabteamext.com"});
-	triggered = false; 
+	triggered = false;
 }
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -159,7 +174,7 @@ function unpin_all() {
 	update_badge();
 	console.log("roster cleared");
 	triggered = false;
-	}); 
+	});
 }
 /////////////////////////////////////////////////////////////////////////////////////////
 
